@@ -2,7 +2,6 @@
 class deposit{
 	public $type;
 	public $size;
-	private $terrain_grid_id;
 	
 	public function __construct($id=null,$planet=null,$size=null,$type=null, $coord_x=null,$coord_y=null){
 		$this->db = new mysqli("localhost", "root", "", "combine");
@@ -44,9 +43,10 @@ class deposit{
 			WHERE planet.id = '.$this->id.' 
 			AND planet.type = terrains_types.id';
 		}
+
 		else
 		{
-			$req = 'SELECT planet.name as planet, deposits_types.name as type, deposits_types.id as type_id, planet_deposit.size as size, planet_deposit.coord_x as coord_x, planet_deposit.coord_y as coord_y, planet_deposit.id as deposit_id
+			$req = 'SELECT planet.name as planet, planet.id as planet_id, deposits_types.name as type, deposits_types.id as type_id, planet_deposit.size as size, planet_deposit.coord_x as coord_x, planet_deposit.coord_y as coord_y, planet_deposit.id as deposit_id
 			FROM planet,planet_deposit, deposits_types 
 			WHERE planet.id = planet_deposit.planet_id
 			AND planet_deposit.deposit_type_id = deposits_types.id';
@@ -57,12 +57,9 @@ class deposit{
 			{
 				$planet_list[] = $obj;
 			}
+			$result->close();
 		}
-
-    /* free result set */
-    $result->close();
 	return $planet_list;
-		
 	}
 	public function deposit_delete(){
 		$req = 'DELETE FROM planet_deposit WHERE id = '.$this->id.'';

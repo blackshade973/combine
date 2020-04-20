@@ -9,7 +9,7 @@ if(isset($_POST)){
 		$planet = new planet('',$_POST['planet_name'],$_POST['planet_size'],$_POST['planet_type']);
 		echo json_encode($planet->planet_get(true),JSON_FORCE_OBJECT);
 	}
-		if(isset($_POST['deposit_size']))
+	if(isset($_POST['deposit_size']))
 	{
 		$deposit = new deposit('',$_POST['planet_id'],$_POST['deposit_size'],$_POST['deposit_type'],$_POST['coord_x'],$_POST['coord_y']);
 		echo json_encode($deposit->deposit_get(true),JSON_FORCE_OBJECT);

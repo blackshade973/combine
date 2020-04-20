@@ -55,10 +55,7 @@ class planet extends deposit{
 			}
 			$result->close();
 		}
-
- 
-	return $planet_list;
-		
+		return $planet_list;
 	}
 	public function planet_get_select(){
 		$req = "SELECT id,name FROM planet";
