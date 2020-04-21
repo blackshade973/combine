@@ -34,7 +34,12 @@ class deposit{
 		$result->close();
 		return $ret;
 	}
-	
+	public function deposit_update(){
+		$req = 'UPDATE planet_deposit SET planet_id = '.$this->planet_id.',deposit_type_id = '.$this->type.',size = '.$this->size.',coord_x = '.$this->coord_x.',coord_y = '.$this->coord_y.' 
+				WHERE id = '.$this->id.'';
+		if(!$this->db->query($req) && DEBUG==1)
+		printf("Message d'erreur : %s\n", $this->db->error);
+	}
 	public function deposit_get($all){
 		if($all == false)
 		{

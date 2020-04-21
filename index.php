@@ -8,6 +8,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 <script src="http://malsup.github.io/jquery.form.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 <script src="script_d.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/vader/jquery-ui.min.css">
 </head>
@@ -23,6 +24,7 @@
 			?>
 		</select>
 		<input type="submit" name="planet_action" id="action_planet" value="Validate" >
+		<input type="hidden" name="planet_id" id="planet_id"> 
 	</form>
 	</div>
 	<div id="deposit_create" class="form_box" title="create deposit">
@@ -42,6 +44,7 @@
 				echo $liste->get_types(); 
 			?>
 			</select>
+			<input type="hidden" name="deposit_id" id="deposit_id"> 
 			<input type="submit" name="action" value="Validate">
 		</form>
 	</div>

@@ -6,12 +6,36 @@ include("terrain.class.php");
 if(isset($_POST)){
 	if(isset($_POST['planet_name']))
 	{
-		$planet = new planet('',$_POST['planet_name'],$_POST['planet_size'],$_POST['planet_type']);
+		if(!isset($_POST['planet_id']))
+		{
+			$planet = new planet('',$_POST['planet_name'],$_POST['planet_size'],$_POST['planet_type']);
+		}
+		else
+		{
+			$planet = new planet($_POST['planet_id']);
+			$planet->name = $_POST['planet_name'];
+			$planet->size = $_POST['planet_size'];
+			$planet->type = $_POST['planet_type'];
+			$planet->planet_update();
+		}
 		echo json_encode($planet->planet_get(true),JSON_FORCE_OBJECT);
 	}
 	if(isset($_POST['deposit_size']))
 	{
-		$deposit = new deposit('',$_POST['planet_id'],$_POST['deposit_size'],$_POST['deposit_type'],$_POST['coord_x'],$_POST['coord_y']);
+		if(!isset($_POST['deposit_id']))
+		{
+			$deposit = new deposit('',$_POST['planet_id'],$_POST['deposit_size'],$_POST['deposit_type'],$_POST['coord_x'],$_POST['coord_y']);
+		}
+		else
+		{
+			$deposit = new deposit($_POST['deposit_id']);
+			$deposit->planet_id = $_POST['planet_id'];
+			$deposit->size = $_POST['deposit_size'];
+			$deposit->type = $_POST['deposit_type'];
+			$deposit->coord_x = $_POST['coord_x'];
+			$deposit->coord_y = $_POST['coord_y'];
+			$deposit->deposit_update();
+		}
 		echo json_encode($deposit->deposit_get(true),JSON_FORCE_OBJECT);
 	}
 	if(isset($_POST['get_planet_list']))

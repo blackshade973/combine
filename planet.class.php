@@ -29,7 +29,7 @@ class planet extends deposit{
 			printf("Message d'erreur : %s\n", $this->db->error);
 	}
 	public function planet_update(){
-		$req = 'UPDATE  planet SET name = "'.$this->name.'", type = '.$this->type.', id='.$this->id.' WHERE id = '.$this->id.'';
+		$req = 'UPDATE  planet SET name = "'.$this->name.'", type = '.$this->type.', size='.$this->size.' WHERE id = '.$this->id.'';
 		if(!$this->db->query($req) && DEBUG==1)
 			printf("Message d'erreur : %s\n", $this->db->error);
 	}
