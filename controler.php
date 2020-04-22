@@ -1,6 +1,7 @@
 <?php
 include("deposit.class.php");
 include("planet.class.php");
+include("terrain.class.php");
 
 	if(isset($_POST['get_planet__deposit_list']))
 	{
