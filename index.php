@@ -32,10 +32,6 @@
 	<div id="deposit_create" class="form_box" title="create deposit">
 		<form id="form_create_deposit">
 			<label for="planet_id">Planet</label><select name="deposit_planet_id" id="deposit_planet_id" class="">
-			<?php 
-			//$liste = new planet();
-			//echo $liste->planet_get_select(); 
-			?>
 			</select>
 			<label for="deposit_size">Size</label><input class="" type="text" name="deposit_size" id="deposit_size" placeholder="Enter deposit Size">
 			<label for="coord_x">coord x</label><input class="" type="text" name="coord_x" id="coord_x" placeholder="Enter deposit Size" min=1>
