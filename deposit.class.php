@@ -6,9 +6,13 @@ class deposit {
 	public $coord_x;
 	public $coord_y;
 	
-	public function __construct($id=null){
+	public function __construct(){
 		$this->db = new mysqli("localhost", "root", "", "combine");
 	}
+	
+	/* check if the deposit location match the planet size
+	check if there is already a deposit at coordinates */
+	
 	private function check_terrain(){
 		$req = 'SELECT * FROM planet WHERE id = '.$this->planet_id.' AND size >= '.$this->coord_x.' and size >= '.$this->coord_y.'';
 		if ($result = $this->db->query($req))
@@ -25,6 +29,7 @@ class deposit {
 		
 		return 1;
 	}
+	
 	public function deposit_create(){
 		$check = $this->check_terrain();
 		if($check != 1) return $check;
@@ -34,6 +39,8 @@ class deposit {
 		else return "deposit created";
 	
 	}
+	
+	/*return a select list of all deposits type */
 	public function get_types(){
 		$req = "SELECT id,name FROM deposits_types";
 		$ret = '';
@@ -48,6 +55,7 @@ class deposit {
 		$result->close();
 		return $ret;
 	}
+	/* update a deposit */
 	public function deposit_update($id){
 		$check = $this->check_terrain();
 		if($check != 1) return $check;
