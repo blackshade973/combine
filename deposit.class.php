@@ -55,6 +55,7 @@ class deposit {
 		$result->close();
 		return $ret;
 	}
+	
 	/* update a deposit */
 	public function deposit_update($id){
 		$check = $this->check_terrain();
@@ -65,7 +66,9 @@ class deposit {
 		printf("Message d'erreur : %s\n", $this->db->error);
 	return "deposit updated";
 	}
+	
 	public function deposit_get($all){
+		/* return a list of all deposit and their data for a given planet */
 		if($all == false)
 		{
 			$req = 'SELECT planet.name as planet, planet.id as planet_id, deposits_types.name as type, deposits_types.id as type_id, planet_deposit.size as size, planet_deposit.coord_x as coord_x, planet_deposit.coord_y as coord_y, planet_deposit.id as deposit_id
@@ -74,7 +77,7 @@ class deposit {
 			AND planet.id = planet_deposit.planet_id
 			AND planet_deposit.deposit_type_id = deposits_types.id';
 		}
-
+		/* return all deposits for all planets */
 		else
 		{
 			$req = 'SELECT planet.name as planet, planet.id as planet_id, deposits_types.name as type, deposits_types.id as type_id, planet_deposit.size as size, planet_deposit.coord_x as coord_x, planet_deposit.coord_y as coord_y, planet_deposit.id as deposit_id
@@ -92,6 +95,7 @@ class deposit {
 		}
 	return $planet_list;
 	}
+	
 	public function deposit_delete(){
 		$req = 'DELETE FROM planet_deposit WHERE id = '.$this->id.'';
 		if(!$this->db->query($req) && DEBUG==1)
