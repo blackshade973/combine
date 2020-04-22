@@ -7,7 +7,7 @@ class deposit {
 	public $coord_y;
 	
 	public function __construct(){
-		$this->db = new mysqli("localhost", "root", "", "combine");
+		$this->db = new mysqli(HOST, USER, PASS, DBNAME);
 	}
 	
 	/* check if the deposit location match the planet size

@@ -7,7 +7,7 @@ class planet extends deposit{
 	public $db;
 	
 	public function __construct($id=null){
-		$this->db = new mysqli("localhost", "root", "", "combine");
+		$this->db = new mysqli(HOST, USER, PASS, DBNAME);
 		if(isset($name))
 		{
 			$this->planet_create($name,$size,$type);

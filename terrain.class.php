@@ -5,8 +5,8 @@ class terrain{
 	private $coord_x;
 	private $coord_y;
 	
-		public function __construct($name=null,$size=null,$type=null){
-		$this->db = new mysqli("localhost", "root", "", "combine");
+	public function __construct($name=null,$size=null,$type=null){
+		$this->db = new mysqli(HOST, USER, PASS, DBNAME);
 
 	}
 	public function get_types(){
