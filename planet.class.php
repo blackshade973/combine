@@ -21,7 +21,7 @@ class planet extends deposit{
 	public function planet_create(){
 		$req = 'INSERT INTO planet VALUES ("","'.$this->name.'",'.$this->type.','.$this->size.')';
 		if(!$this->db->query($req))
-			printf("Message d'erreur : %s\n", $this->db->error);
+			return "Message d'erreur :".$this->db->error;
 		return "planet created";
 	}
 	
@@ -32,18 +32,18 @@ class planet extends deposit{
 		/* we better delete the deposits on the planet as well */
 		$req = 'DELETE FROM planet_deposit WHERE planet_id = '.$this->id.'';
 		if(!$this->db->query($req) )
-			printf("Message d'erreur : %s\n", $this->db->error);
+			return "Message d'erreur :".$this->db->error;
 		return "Planet and all its deposits have been deleted";
 	}
 	
 	public function planet_update($id){
 		$req = 'UPDATE  planet SET name = "'.$this->name.'", type = '.$this->type.', size='.$this->size.' WHERE id = '.$id.'';
-		if(!$this->db->query($req) && DEBUG==1)
-			printf("Message d'erreur : %s\n", $this->db->error);
+		if(!$this->db->query($req))
+			return "Message d'erreur :".$this->db->error;
 		/* deleting the deposit that are out of the new planet size. latter I should make a check before to see IF the size has changed*/
 		$req = 'DELETE FROM planet_deposit WHERE planet_id = '.$id.' AND (coord_x >= '.$this->size.' OR coord_y >= '.$this->size.')';
-		if(!$this->db->query($req) )
-			printf("Message d'erreur : %s\n", $this->db->error);
+		if(!$this->db->query($req))
+			return "Message d'erreur :".$this->db->error;
 		return "Planet updated. If the size has been changed, all deposits out of the new size, if any, have been deleted";
 	}
 	

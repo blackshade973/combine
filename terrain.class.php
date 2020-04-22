@@ -13,7 +13,7 @@ class terrain{
 		$req = "SELECT id,type_name FROM terrains_types";
 		$ret = '';
 		if ($result = $this->db->query($req)) 
-		{
+		{	$ret .= '<option disabled selected value> -- select a type -- </option>';
 			while ($obj = $result->fetch_object()) 
 			{
 				$ret.= '<option value="'.$obj->id.'">'.$obj->type_name.'</option>';
@@ -22,17 +22,6 @@ class terrain{
 		$result->close();
 		return $ret;
 	}
-	public function create(){
-	
-	}
-	public function delete(){
-	
-	}
-	public function update(){
-	
-	}
-	public function display(){
-		
-	}
+
 }
 ?>

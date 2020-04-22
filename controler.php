@@ -34,7 +34,7 @@ include("terrain.class.php");
 		$deposit->type = $_POST['deposit_type'];
 		$deposit->coord_x = $_POST['coord_x'];
 		$deposit->coord_y = $_POST['coord_y'];
-		if(isset($_POST['deposit_id']) || $_POST['deposit_id'] != NULL)
+		if(isset($_POST['deposit_id']) && $_POST['deposit_id'] != NULL)
 		{
 			echo $deposit->deposit_update($_POST['deposit_id']);
 		}

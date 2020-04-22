@@ -35,7 +35,7 @@ class deposit {
 		if($check != 1) return $check;
 		$req = 'INSERT INTO planet_deposit VALUES ("",'.$this->planet_id.','.$this->type.','.$this->size.','.$this->coord_x.','.$this->coord_y.')';
 		if(!$this->db->query($req))
-			printf("Message d'erreur : %s\n", $this->db->error);
+			return "Message d'erreur :".$this->db->error;
 		else return "deposit created";
 	
 	}
@@ -63,7 +63,7 @@ class deposit {
 		$req = 'UPDATE planet_deposit SET planet_id = '.$this->planet_id.',deposit_type_id = '.$this->type.',size = '.$this->size.',coord_x = '.$this->coord_x.',coord_y = '.$this->coord_y.' 
 				WHERE id = '.$id.'';
 		if(!$this->db->query($req))
-		printf("Message d'erreur : %s\n", $this->db->error);
+		return "Message d'erreur :".$this->db->error;
 	return "deposit updated";
 	}
 	
@@ -99,7 +99,7 @@ class deposit {
 	public function deposit_delete(){
 		$req = 'DELETE FROM planet_deposit WHERE id = '.$this->id.'';
 		if(!$this->db->query($req) && DEBUG==1)
-			printf("Message d'erreur : %s\n", $this->db->error);
+			return "Message d'erreur :".$this->db->error;
 	}
 }
 ?>
