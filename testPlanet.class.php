@@ -3,7 +3,6 @@
 use PHPUnit\Framework\TestCase;
 include("constantes.php");
 include("my_db.class.php");
-require("deposit.class.php");
 include("planet.class.php");
 
 final class planetTest extends TestCase

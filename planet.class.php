@@ -1,5 +1,5 @@
 <?php
-class planet extends deposit{
+class planet{
 	
 	/** @var int $id */
 	public $id;

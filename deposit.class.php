@@ -25,7 +25,7 @@ class deposit {
 
 	/* check if the deposit location match the planet size
 	check if there is already a deposit at coordinates */
-	private function check_terrain(int $id=null) : bool {
+	private function check_terrain(int $id=-1) : bool {
 		if($result = $this->db->select('*')->from('planet')->where('id = ? AND size >= ? and size >= ?')->params(array($this->planet_id,$this->coord_x,$this->coord_y))->get())
 		{
 			$nb = $result->num_rows;
