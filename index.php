@@ -21,8 +21,8 @@
 		<label for="planet_size">Size</label><input class="" type="text" name="planet_size" id="planet_size" placeholder="Enter planet Size" min = 1 max=20>
 		<label for="planet_type">Type</label><select name="planet_type" class="" id="planet_type">
 		<?php 
-			$liste = new terrain();
-			echo $liste->get_types(); 
+			$liste = new deposit();
+			echo $liste->get_terrain_types(); 
 			?>
 		</select>
 		<input type="submit" name="planet_action" id="action_planet" value="Validate" >
@@ -38,7 +38,7 @@
 			<label for="coord_y">coord y</label><input class="" type="text" name="coord_y" id="coord_y" placeholder="Enter deposit Size" min=1>
 			<label for="deposit_type">Type</label><select name="deposit_type" id="deposit_type" class="">
 			<?php 
-				$liste = new deposit();
+				//$liste = new deposit();
 				echo $liste->get_types(); 
 			?>
 			</select>

@@ -11,7 +11,7 @@ function put_deposit(id){
 	$.ajax({ url: "controler.php",
         type:'POST',
 		dataType: "json",
-		data: { get_planet__deposit_list : true, planet_id : id },
+		data: { get_planet_deposit_list : true, planet_id : id },
         success: function(response){
 			var elem='';
 			var top;
@@ -28,7 +28,15 @@ function put_deposit(id){
 function dialog_me(item){
 	$('#planet_name').val('');
 	$('#planet_size').val('');
-	$('#planet_type').val('');
+	$('#planet_type').val('1');
+	$("#planet_id").val('')
+	
+	$('#coord_x').val('');
+	$('#coord_y').val('');
+	$('#deposit_size').val('');
+	$('#deposit_type').val('1');
+	$('#deposit_id').val('');
+	
 	$( item ).dialog('open');
 }
 function delete_elem(type,id){
@@ -107,6 +115,9 @@ function valid(){
 				required : true,
 				digits : true
 			},
+			planet_type: {
+				required : true,
+			},
 			planet_name: {
 			required: true,
 			maxlength: 55
@@ -116,6 +127,9 @@ function valid(){
 			planet_size: {
 				required : "Please enter a planet size",
 				digits : "planet size must be a number",
+			},
+			planet_type: {
+				required : "Please select a planet type",
 			},
 			planet_name: {
 				required: "Please provide a planet_name",

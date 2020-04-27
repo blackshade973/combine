@@ -1,0 +1,12 @@
+parameters:
+	level: 6
+		
+	autoload_files:
+		- constantes.php
+		- my_db.class.php
+		- deposit.class.php
+		- planet.class.php
+		
+			
+	excludes_analyse:
+		- testPlanet.class.php

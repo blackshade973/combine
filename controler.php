@@ -1,14 +1,10 @@
 <?php
-define('HOST','127.0.0.1');
-define('USER','root');
-define('PASS','');
-define('DBNAME','combine');
-
-include("deposit.class.php");
+include("constantes.php");
+require_once("my_db.class.php");
+require("deposit.class.php");
 include("planet.class.php");
-include("terrain.class.php");
 
-	if(isset($_POST['get_planet__deposit_list']))
+	if(isset($_POST['get_planet_deposit_list']))
 	{
 		/*get the list of all deposits on a given planet*/
 		$planet = new planet($_POST['planet_id']);
@@ -23,11 +19,11 @@ include("terrain.class.php");
 		$planet->type = $_POST['planet_type'];	
 		if(!isset($_POST['planet_id']) || $_POST['planet_id'] == null)
 		{
-			echo $planet->planet_create();
+			$planet->planet_create();
 		}
 		else
 		{
-			echo $planet->planet_update($_POST['planet_id']);
+			$planet->planet_update($_POST['planet_id']);
 		}
 	}
 	if(isset($_POST['deposit_size']) && isset($_POST['deposit_type']) && isset($_POST['coord_x']) && isset($_POST['coord_y']))
@@ -41,11 +37,11 @@ include("terrain.class.php");
 		$deposit->coord_y = $_POST['coord_y'];
 		if(isset($_POST['deposit_id']) && $_POST['deposit_id'] != NULL)
 		{
-			echo $deposit->deposit_update($_POST['deposit_id']);
+			$deposit->deposit_update($_POST['deposit_id']);
 		}
 		else 
 		{
-			echo $deposit->deposit_create();
+			$deposit->deposit_create();
 		}
 	}
 	if(isset($_POST['get_planet_list']))
@@ -67,12 +63,21 @@ include("terrain.class.php");
 		if($_POST['delete'] == 'planet')
 		{
 			$planet = new planet($_POST['id']);
-			echo $planet->planet_delete();
+			$planet->planet_delete();
 		}
 		if($_POST['delete'] == 'deposit')
 		{
-			$deposit = new deposit($_POST['id']);
-			echo $deposit->deposit_delete();
+			$deposit = new deposit();
+			$deposit->deposit_delete($_POST['id']);
 		}
 	}
+	if(isset($planet->message))
+	{
+		echo $planet->message;
+	}
+	else if (isset($deposit->message))
+	{
+		echo $deposit->message;
+	}
+		
 ?>
